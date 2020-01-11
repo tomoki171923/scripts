@@ -2,8 +2,8 @@
 #############################################
 # Argument : Time (Sec)
 # User: root
-# Return Code : 0 Normal END
-#               1 ABnormal END
+# Return Code : 0 successful termination
+#               1 unsuccessful termination
 #               255 Initialization ERROR
 #############################################
 #-----------------------------------------------------------------------#

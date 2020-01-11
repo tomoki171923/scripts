@@ -2,14 +2,14 @@
 #############################################
 # Argument : List File Name
 # User: root
-# Return Code : 0 Normal END
-#               1 ABnormal END
+# Return Code : 0 successful termination
+#               1 unsuccessful termination
 #               255 Initialization ERROR
 #############################################
 #-----------------------------------------------------------------------#
 # Initialization
 #-----------------------------------------------------------------------#
-#　Set a number of arguments
+# Set a number of arguments
 L_ARGC=1
 L_CONF_LIST=lsCheck.lst
 L_LOG_FILE=./lsCheck_`hostname`_`date +%Y%m%d%H%M%S`.log
