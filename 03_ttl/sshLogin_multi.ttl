@@ -1,0 +1,95 @@
+; sshlogin macro of Tera Term
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+logpath = 'C:\Users\tomoki\Desktop\tmp\'
+environment = 'A men'
+username = 'tomoki'
+password = '**********'
+hostname1 = 'XXXServer'
+hostip1 = '192.168.11.7'
+hostname2 = ''
+hostip2 = ''
+hostname3 = ''
+hostip3 = ''
+hostname4 = ''
+hostip4 = ''
+hostname5 = ''
+hostip5 = ''
+hostname6 = ''
+hostip6 = ''
+;privatekey = ''
+passwdfile = '\password.dat'
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+sprintf' [1] %s %s [2] %s %s [3] %s %s [4] %s %s [5] %s %s [6] %s %s' hostname1 #13 hostname2 #13 hostname3 #13 hostname4 #13 hostname5 #13 hostname6 #13
+inputbox inputstr environment
+str2int input inputstr
+
+if input = 1 then
+  hostname = hostname1
+  hostip = hostip1
+elseif input = 2 then
+  hostname = hostname2
+  hostip = hostip2
+elseif input = 3 then
+  hostname = hostname3
+  hostip = hostip3
+elseif input = 4 then
+  hostname = hostname4
+  hostip = hostip4
+elseif input = 5 then
+  hostname = hostname5
+  hostip = hostip5
+elseif input = 6 then
+  hostname = hostname6
+  hostip = hostip6
+else
+  end
+endif
+
+title = hostname
+strconcat title ' ssh login'
+msg = 'Enter password for user '
+strconcat msg username
+passwdkey = username
+strconcat passwdkey '@'
+strconcat passwdkey hostname
+getdir passwdfilepath
+strconcat passwdfilepath passwdfile
+getpassword passwdfilepath passwdkey password
+
+
+msg = hostip
+strconcat msg ':22 /ssh /auth=password /user=' ; input password
+;strconcat msg ':22 /ssh /auth=challenge /user=' ; challenge and response
+;strconcat msg ':22 /ssh /auth=publickey /user=' ; public key authentication
+strconcat msg username
+;strconcat msg ' /keyfile='
+;strconcat msg privatekey
+strconcat msg ' /passwd='
+;strconcat msg inputstr
+strconcat msg password
+
+connect msg
+
+logfile = logpath
+strconcat logfile username
+strconcat logfile '@'
+strconcat logfile hostname
+getdate datetime '%Y%m%d-%H%M%S'
+strconcat logfile '_'
+strconcat logfile datetime
+strconcat logfile '.log'
+logopen logfile 0 1
+logwrite '*****************************************************'#13#10
+logwrite hostname
+logwrite #13#10
+logwrite datetime
+logwrite #13#10
+logwrite '*****************************************************'#13#10
+
+wait '$'
+;sendln 'su -'
+;wait 'Password:'
+;sendln rootpasswd
+;wait '#'
+sendln 'date;hostname;whoami'

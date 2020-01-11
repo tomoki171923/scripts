@@ -1,0 +1,9 @@
+#-----------------------------------------------------------------------#
+# 1.Format
+#<PERMISSION>,<OWNER>,GROUP>.<FILE or DIRECTORY Absolute Path>
+# 2.Example
+# 644.root.root./etc/sysctl.conf
+#-----------------------------------------------------------------------#
+600,root,root,/etc/ntp.conf
+644,root,root,/etc
+600,root,root,aaa
