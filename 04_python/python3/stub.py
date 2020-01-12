@@ -8,8 +8,8 @@ if __name__ == "__main__":
 
     # Stub of ExecCmd
     filepath = "./cmdlist.txt"
-    cmd = ExecCmd.ExecCmd()
-    cmd.ecec_cmd(filepath)
+    cmd = ExecCmd.ExecCmd(filepath)
+    cmd.ecec_cmd()
     del cmd
 
     # Stub of Logger

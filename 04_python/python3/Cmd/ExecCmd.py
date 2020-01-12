@@ -6,14 +6,25 @@ import datetime
 from io import StringIO
 
 class ExecCmd:
-    def ecec_cmd(self,filepath):
-        f = open(filepath)
-        cmds = f.readlines()
-        f.close()
 
+    # constructor
+    def __init__(self, filepath):
+        try:
+            f = open(filepath)
+            self.__cmds = f.readlines()
+            f.close()
+        except Exception as e:
+            traceback.print_exc()
+            sys.exit(1)
+
+    # destructor
+    def __del__(self):
+        del self.__cmds
+
+    def ecec_cmd(self):
         #Set linefeed code
         ln = "/n"
-        for cmd in cmds:
+        for cmd in self.__cmds:
             cmd = cmd.replace(ln,'')
             print("------------- start -------------")
             print("commond : " + cmd)
