@@ -1,3 +1,0 @@
-ls -l
-cd ~ ;pwd
-cat ~/.bash_profile
